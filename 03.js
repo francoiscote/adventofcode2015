@@ -1,14 +1,16 @@
-$input = require('./inputs/03');
+input = require('./inputs/03');
+
+let history = {};
 
 class Santa {
 
-    constructor(path) {
+    constructor(path, skip) {
         this.path = path;
+		this.skip = skip;
         this.position = {
             x: 0,
             y: 0
         };
-        this.history = {};
     }
 
     move(i) {
@@ -31,11 +33,11 @@ class Santa {
     }
 
     deliver(house) {
-        let $houseKey = `${house.x}-${house.y}`;
-        if (this.history.hasOwnProperty($houseKey)) {
-            this.history[$houseKey] += 1;
+        let houseKey = `${house.x}-${house.y}`;
+        if (history.hasOwnProperty(houseKey)) {
+            history[houseKey] += 1;
         } else {
-            this.history[$houseKey] = 1;
+            history[houseKey] = 1;
         }
     }
 
@@ -44,19 +46,35 @@ class Santa {
         this.deliver(this.position);
 
         // Move and deliver
-        this.path.split('').forEach((dest) => {
+        this.path.split('').forEach((dest, i) => {
+			if (this.skip) {
+				if (this.skip === 1 && i%2 > 0) {
+					return
+				}
+				if (this.skip === 2 && i%2 === 0) {
+					return
+				}
+			}
             this.move(dest);
             this.deliver(this.position);
         });
 
     }
-
-    answer() {
-        console.log(Object.keys(this.history).length);
-    }
-
+	
 }
 
-let s = new Santa($input);
+// Part 1
+let s = new Santa(input);
 s.startDelivery();
-s.answer();
+console.log(`Answer Part 1: ${Object.keys(history).length}`);
+
+// Clear
+history = {};
+
+let s1 = new Santa(input, 1);
+s1.startDelivery();
+
+let s2 = new Santa(input, 2);
+s2.startDelivery();
+
+console.log(`Answer Part 2: ${Object.keys(history).length}`);
