@@ -13,7 +13,8 @@ class Hasher {
 			const md5sum = crypto.createHash('md5');
 			md5sum.update(this.key + '' + this.current);
 			const hexHash = md5sum.digest('hex');
-			if (hexHash.substr(0, 6) === '00000') {
+			
+			if (hexHash.slice(0, 6) === '000000') {
 				this.match = this.current;
 			} else {
 				this.current++;
