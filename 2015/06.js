@@ -40,18 +40,21 @@ class Grid {
 	}
 
 	toggle(xFrom, yFrom, xTo, yTo) {
+		console.log('toggle', xFrom, yFrom, xTo, yTo);
 		this.applyOnGrid(xFrom, yFrom, xTo, yTo, (h, w) => {
 			this.setLight(h, w, !this.grid[h][w]);
 		});
 	}
 	
 	turnon(xFrom, yFrom, xTo, yTo) {
+		console.log('turnon', xFrom, yFrom, xTo, yTo);
 		this.applyOnGrid(xFrom, yFrom, xTo, yTo, (h, w) => {
 			this.setLight(h, w, true);
 		});
 	}
 	
 	turnoff(xFrom, yFrom, xTo, yTo) {
+		console.log('turnoff', xFrom, yFrom, xTo, yTo);
 		this.applyOnGrid(xFrom, yFrom, xTo, yTo, (h, w) => {
 			this.setLight(h, w, false);
 		});
