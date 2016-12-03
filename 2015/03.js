@@ -6,7 +6,7 @@ class Santa {
 
     constructor(path, skip) {
         this.path = path;
-		this.skip = skip;
+        this.skip = skip;
         this.position = {
             x: 0,
             y: 0
@@ -47,20 +47,20 @@ class Santa {
 
         // Move and deliver
         this.path.split('').forEach((dest, i) => {
-			if (this.skip) {
-				if (this.skip === 1 && i%2 > 0) {
-					return
-				}
-				if (this.skip === 2 && i%2 === 0) {
-					return
-				}
-			}
+            if (this.skip) {
+                if (this.skip === 1 && i % 2 > 0) {
+                    return
+                }
+                if (this.skip === 2 && i % 2 === 0) {
+                    return
+                }
+            }
             this.move(dest);
             this.deliver(this.position);
         });
 
     }
-	
+
 }
 
 // Part 1
