@@ -9,11 +9,11 @@ class Grid {
   }
 
   applyOnGrid(xFrom, yFrom, xTo, yTo, operation) {
-    if (typeof operation !== "function") {
-      throw "Operation must be a function";
+    if (typeof operation !== 'function') {
+      throw 'Operation must be a function';
     }
-    for (var h = yFrom; h <= yTo; h++) {
-      for (var w = xFrom; w <= xTo; w++) {
+    for (let h = yFrom; h <= yTo; h++) {
+      for (let w = xFrom; w <= xTo; w++) {
         operation.call(this, h, w);
       }
     }
@@ -25,23 +25,23 @@ class Grid {
     let actionFunc = null;
 
     switch (command) {
-      case "toggle":
+      case 'toggle':
         actionFunc = (h, w) => {
-          this.grid[h][w] = !this.grid[h][w]
-        }
+          this.grid[h][w] = !this.grid[h][w];
+        };
         break;
-      case "turnon":
+      case 'turnon':
         actionFunc = (h, w) => {
           this.grid[h][w] = true;
-        }
+        };
         break;
-      case "turnoff":
+      case 'turnoff':
         actionFunc = (h, w) => {
           this.grid[h][w] = false;
-        }
+        };
         break;
       default:
-        console.log("Nothing to do");
+        console.log('Nothing to do');
     }
 
     this.applyOnGrid(xFrom, yFrom, xTo, yTo, actionFunc);
@@ -58,9 +58,7 @@ class Grid {
     // Two-dimensional count
     return this.grid.reduce((memoRow, row) => {
       const debugRow = [];
-      const rowCount = row.reduce((memoLight, light) => {
-        return memoLight += (light) ? 1 : 0;
-      }, 0);
+      const rowCount = row.reduce((memoLight, light) => memoLight += (light) ? 1 : 0, 0);
       return memoRow += rowCount;
     }, 0);
   }

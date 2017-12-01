@@ -1,0 +1,25 @@
+{
+  "name": "adventofcode",
+  "version": "1.0.0",
+  "description": "My solutions for http://adventofcode.com",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/francoiscote/adventofcode.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/francoiscote/adventofcode/issues"
+  },
+  "homepage": "https://github.com/francoiscote/adventofcode#readme",
+  "devDependencies": {
+    "eslint": "^4.12.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0"
+  }
+}

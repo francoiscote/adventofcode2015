@@ -8,19 +8,19 @@ class InstructionsParser {
 
   parse() {
     return this.input.map((instr) => {
-      let instruction = {};
+      const instruction = {};
 
-      let splited = instr.split(' -> ');
+      const splited = instr.split(' -> ');
 
-      instruction[splited[1]] = { value: splited[0], answer: null, resolved: 0};
+      instruction[splited[1]] = { value: splited[0], answer: null, resolved: 0 };
 
       return instruction;
     });
   }
 }
 
-const ip = new InstructionsParser( input07 );
-console.log( ip.parse() );
+const ip = new InstructionsParser(input07);
+console.log(ip.parse());
 
 // {
 //   'ad': {
