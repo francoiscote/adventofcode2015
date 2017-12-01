@@ -1,4 +1,4 @@
-const input = require('./inputs/03');
+const input = require('./input');
 
 let history = {};
 

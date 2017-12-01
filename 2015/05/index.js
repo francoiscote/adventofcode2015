@@ -1,4 +1,4 @@
-const input = require('./inputs/05').split('\n');
+const input = require('./input').split('\n');
 
 // PART 1
 const part1 = input.filter((i) => {

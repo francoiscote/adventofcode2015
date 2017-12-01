@@ -1,4 +1,4 @@
-const input = require('./inputs/06').split('\n');
+const input = require('./input').split('\n');
 
 class Grid {
   constructor(width, height) {

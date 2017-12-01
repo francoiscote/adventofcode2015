@@ -1,4 +1,4 @@
-const input07 = require('./inputs/07').split('\n');
+const input07 = require('./input').split('\n');
 
 
 class InstructionsParser {
