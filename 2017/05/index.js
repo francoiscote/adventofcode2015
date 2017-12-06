@@ -22,21 +22,20 @@ class InstructionsParser {
   }
 
   move() {
-    let currentInstruction = this.currentInstruction;
-    const { value, offset } = currentInstruction;
+    const { value, offset } = this.currentInstruction;
+
+    // update offset
+    this.updateOffset();
 
     // jump
     this.current += value + offset;
-
-    // update offset
-    this.updateOffset(currentInstruction);
 
     // Save stepCount
     this.stepCount += 1;
   }
 
-  updateOffset(currentInstruction) {
-    currentInstruction.offset += 1;
+  updateOffset() {
+    this.currentInstruction.offset += 1;
   }
 
   get currentInstruction() {
@@ -55,12 +54,12 @@ console.log('Part 1:', parser.stepCount);
 let solution2 = null;
 
 class InstructionsParser2 extends InstructionsParser {
-  updateOffset(currentInstruction) {
-    const { value, offset } = currentInstruction;
+  updateOffset() {
+    const { value, offset } = this.currentInstruction;
     if (value + offset >= 3) {
-      currentInstruction.offset -= 1;
+      this.currentInstruction.offset -= 1;
     } else {
-      currentInstruction.offset += 1;
+      this.currentInstruction.offset += 1;
     }
   }
 }
