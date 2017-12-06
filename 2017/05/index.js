@@ -15,16 +15,18 @@ class InstructionsParser {
   }
 
   parse() {
-    // loop through instructions until we are out
+    // loop through instructions until we try to hit an index
+    // outside of the list
     while(this.current <= this.instructions.length - 1) {
       this.move();
     }
   }
 
   move() {
+    // destructure current instruction before we change them.
     const { value, offset } = this.currentInstruction;
 
-    // update offset
+    // update the offset for the next instruction.
     this.updateOffset();
 
     // jump

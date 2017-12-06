@@ -8,7 +8,8 @@ let solution1 = null;
 
 class MemoryManager {
   constructor(blocks) {
-    this.blocks = blocks.split('\t').map( m => parseInt(m) );
+    // save blocks as array of integers
+    this.blocks = blocks.split('\t').map(m => parseInt(m, 10));
     this.states = [];
     this.duplicatedIndex = null;
   }
@@ -74,5 +75,4 @@ console.log('Part 1:', mem.redisAmount);
 // PART 2
 // -------------------------------------
 let solution2 = null;
-
 console.log('Part 2:', mem.loopSize);
