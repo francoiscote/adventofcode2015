@@ -28,7 +28,7 @@ console.log('Part 1:', part1());
 
 // PART 2
 
-const compare = (id1, id2) => {
+const compareLetters = (id1, id2) => {
   const letters1 = id1.split('');
   const letters2 = id2.split('');
 
@@ -40,13 +40,11 @@ const compare = (id1, id2) => {
 
 const part2 = () => {
   let match = '';
-  IDs.forEach((id1) => {
-    IDs.forEach((id2) => {
-      const diff = compare(id1, id2);
-      if (diff === 1) {
-        match = `${id1} : ${id2}`;
-      }
-    });
+  compareValues(IDs, (id1, id2) => {
+    const diff = compareLetters(id1, id2);
+    if (diff === 1) {
+      match = `${id1} : ${id2}`;
+    }
   });
   return match;
 };
