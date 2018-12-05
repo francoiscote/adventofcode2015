@@ -1,3 +1,4 @@
+import { compareValues } from 'utils/arrays';
 import input from './input';
 
 const IDs = input.split(/\r?\n/);
