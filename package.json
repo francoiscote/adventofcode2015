@@ -2,24 +2,34 @@
   "name": "adventofcode",
   "version": "1.0.0",
   "description": "My solutions for http://adventofcode.com",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "homepage": "https://github.com/francoiscote/adventofcode#readme",
+  "author": "",
+  "license": "ISC",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/francoiscote/adventofcode.git"
   },
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/francoiscote/adventofcode/issues"
   },
-  "homepage": "https://github.com/francoiscote/adventofcode#readme",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./dist/index.js",
+    "watch": "nodemon --exec babel-node ./src/index.js",
+    "watch:debug": "nodemon --inspect --exec babel-node ./src/index.js",
+    "build": "babel src --out-dir dist --source-maps --verbose",
+    "build:watch": "npm run build -- --watch",
+    "prebuild": "rm -rf dist"
+  },
   "devDependencies": {
+    "@babel/cli": "^7.2.0",
+    "@babel/core": "^7.2.0",
+    "@babel/node": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
     "eslint": "^4.12.1",
     "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.8.0"
+    "eslint-plugin-import": "^2.8.0",
+    "nodemon": "^1.18.7"
   },
   "dependencies": {
     "lodash": "^4.17.4"
