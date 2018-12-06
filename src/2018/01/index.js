@@ -1,7 +1,6 @@
 /* eslint no-restricted-syntax: "off", guard-for-in: "off" */
+import { splitLines } from 'utils/strings';
 import input from './input';
-
-const inputArray = input.split(/\r?\n/);
 
 const parseOperation = (operation) => {
   const operator = operation.slice(0, 1);
@@ -10,8 +9,10 @@ const parseOperation = (operation) => {
   return operator === '-' ? -1 * value : value;
 };
 
+const inputArray = splitLines(input, parseOperation);
+
 // PART 1
-const total = inputArray.reduce((acc, current) => acc + parseOperation(current), 0);
+const total = inputArray.reduce((acc, current) => acc + current, 0);
 console.log('PART 1:', total);
 
 // PART 2
@@ -20,9 +21,8 @@ let twiceValue = null;
 
 const findDuplicate = () => {
   inputArray.some((current) => {
-    const value = parseOperation(current);
     const currentFrequency = history[history.length - 1] || 0;
-    const newFrequency = currentFrequency + value;
+    const newFrequency = currentFrequency + current;
 
     if (history.includes(newFrequency)) {
       twiceValue = newFrequency;

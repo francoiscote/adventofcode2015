@@ -1,5 +1,10 @@
 /* eslint import/prefer-default-export: "off" */
 
+export const split = (string = '', delimiter = '', transform = v => v) =>
+  string.split(delimiter).map(v => transform(v));
+
+export const splitLines = (string = '', transform = undefined) => split(string, /\r?\n/, transform);
+
 /**
  * This utility function will get a string of consecutive numbers
  * and ouput an array of integers from those numbers.

@@ -1,7 +1,8 @@
+import { splitLines } from 'utils/strings';
 import { compareValues } from 'utils/arrays';
 import input from './input';
 
-const IDs = input.split(/\r?\n/);
+const IDs = splitLines(input);
 
 const lettersMap = (id) => {
   const letters = id.split('');
