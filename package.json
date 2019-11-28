@@ -14,14 +14,11 @@
   },
   "main": "index.js",
   "scripts": {
-    "build": "babel src --out-dir dist --source-maps --verbose",
-    "build:watch": "npm run build -- --watch",
     "dev": "nodemon --exec babel-node ./src/index.js",
     "dev:debug": "nodemon --inspect --exec babel-node ./src/index.js",
-    "lint": "eslint '**/*.{js,jsx}'",
-    "lint:fix": "eslint --fix '**/*.{js,jsx}'",
+    "lint": "eslint '**/*.{js}'",
+    "lint:fix": "eslint --fix '**/*.{js}'",
     "lint:check": "eslint --print-config server.js | eslint-config-prettier-check",
-    "prebuild": "rm -rf dist",
     "start": "node ./dist/index.js"
   },
   "devDependencies": {
