@@ -5,13 +5,17 @@ The solutions are saved in folders per year. There is also a `utils` folder wher
 ## Setup
 
 ```
-$ npm install
+$ yarn install
 ```
 
-## Run
+## Run Dev Mode
 
 ```
-$ npm run watch
+$ yarn dev
 ```
 
 This will compile, run and watch the `src/index.js` with nodemon and babel.
+
+## Linting
+
+This repo also has all the necessary modules for your favorite editor to lint and auto-format your code using eslint and prettier. Linting code in that kind of project may seem counter productive, but if your goal is to learn to write better quality code, then this could be an intersting thing to enable.
