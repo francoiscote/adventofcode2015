@@ -30,6 +30,7 @@ class Santa {
     }
   }
 
+  // eslint-disable-next-line class-methods-use-this
   deliver(house) {
     const houseKey = `${house.x}-${house.y}`
     if (history.hasOwnProperty(houseKey)) {

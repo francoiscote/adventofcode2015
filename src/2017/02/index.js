@@ -1,5 +1,4 @@
 const rows = require('./input').split('\n')
-const _ = require('lodash')
 const { combinations } = require('../../utils/arrays')
 
 // -------------------------------------

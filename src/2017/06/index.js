@@ -1,11 +1,8 @@
-const _ = require('lodash')
 const input = require('./input')
 
 // -------------------------------------
 // PART 1
 // -------------------------------------
-const solution1 = null
-
 class MemoryManager {
   constructor(blocks) {
     // save blocks as array of integers
@@ -74,5 +71,4 @@ console.log('Part 1:', mem.redisAmount)
 // -------------------------------------
 // PART 2
 // -------------------------------------
-const solution2 = null
 console.log('Part 2:', mem.loopSize)

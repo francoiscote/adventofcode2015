@@ -1,11 +1,9 @@
-const input = require('./input').split('\n')
 const _ = require('lodash')
+const input = require('./input').split('\n')
 
 // -------------------------------------
 // PART 1
 // -------------------------------------
-const solution1 = null
-
 class InstructionsParser {
   constructor(instructions) {
     this.instructions = _.zipWith(instructions, i => ({
@@ -55,8 +53,6 @@ console.log('Part 1:', parser.stepCount)
 // -------------------------------------
 // PART 2
 // -------------------------------------
-const solution2 = null
-
 class InstructionsParser2 extends InstructionsParser {
   updateOffset() {
     const { value, offset } = this.currentInstruction

@@ -16,7 +16,7 @@ class Hasher {
       if (hexHash.slice(0, 6) === '000000') {
         this.match = this.current
       } else {
-        this.current++
+        this.current += 1
       }
     }
 

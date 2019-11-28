@@ -1,5 +1,5 @@
+/* eslint-disable no-param-reassign */
 import { splitLines } from 'utils/strings'
-import _ from 'lodash'
 import input from './input'
 
 // -------------------------------------
@@ -11,6 +11,7 @@ const parsedInput = splitLines(input, string => {
     /^Step ([A-Z]{1}) must be finished before step ([A-Z]{1}) can begin.$/,
     'g',
   )
+  // eslint-disable-next-line no-unused-vars
   const [fullString, parent, child] = reg.exec(string)
   return { parent, child }
 })

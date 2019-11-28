@@ -35,7 +35,7 @@ class ChristmasMap {
   move(direction, distance) {
     const { axis } = this.currentCardinal
 
-    for (let i = 0; i < distance; i++) {
+    for (let i = 0; i < distance; i += 1) {
       this.position[axis] += this.currentCardinal[direction]
       // Record History
       this.history.push(this.currentPositionKey)

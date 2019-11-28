@@ -1,5 +1,4 @@
 const passphrases = require('./input').split('\n')
-const _ = require('lodash')
 
 // -------------------------------------
 // PART 1

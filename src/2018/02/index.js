@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { splitLines } from 'utils/strings'
 import { compareValues } from 'utils/arrays'
 import input from './input'

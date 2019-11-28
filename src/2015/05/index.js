@@ -4,9 +4,7 @@ const input = require('./input').split('\n')
 const part1 = input
   .filter(i => {
     const vowels = i.match(/[aeiou]/gi)
-    if (vowels && vowels.length >= 3) {
-      return true
-    }
+    return vowels && vowels.length >= 3
   })
   .filter(i => {
     return /(.)\1/g.test(i)

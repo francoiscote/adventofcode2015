@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 const input = require('./input').split('\n')
 
 class Grid {
@@ -10,10 +11,10 @@ class Grid {
 
   applyOnGrid(xFrom, yFrom, xTo, yTo, operation) {
     if (typeof operation !== 'function') {
-      throw 'Operation must be a function'
+      throw new Error('Operation must be a function')
     }
-    for (let h = yFrom; h <= yTo; h++) {
-      for (let w = xFrom; w <= xTo; w++) {
+    for (let h = yFrom; h <= yTo; h += 1) {
+      for (let w = xFrom; w <= xTo; w += 1) {
         operation.call(this, h, w)
       }
     }
@@ -57,12 +58,12 @@ class Grid {
   countLightsOn() {
     // Two-dimensional count
     return this.grid.reduce((memoRow, row) => {
-      const debugRow = []
-      const rowCount = row.reduce(
-        (memoLight, light) => (memoLight += light ? 1 : 0),
-        0,
-      )
-      return (memoRow += rowCount)
+      const rowCount = row.reduce((memoLight, light) => {
+        memoLight += light ? 1 : 0
+        return memoLight
+      }, 0)
+      memoRow += rowCount
+      return memoRow
     }, 0)
   }
 }
@@ -74,9 +75,9 @@ class InstructionsParser {
   }
 
   parse() {
-    this.inst.map((i, d) => {
+    this.inst.forEach(i => {
       const match = i.match(
-        /(toggle|turn (on|off))\s(\d{1,3})\,(\d{1,3})\sthrough\s(\d{1,3})\,(\d{1,3})/i,
+        /(toggle|turn (on|off))\s(\d{1,3}),(\d{1,3})\sthrough\s(\d{1,3}),(\d{1,3})/i,
       )
 
       // Format Values

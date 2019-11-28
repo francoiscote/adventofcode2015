@@ -3,6 +3,7 @@
   "plugins": ["import"],
   "rules": {
     "no-console": "off",
+    "max-classes-per-file": "off",
     "import/prefer-default-export": "off",
     "no-nested-ternary": "off",
     "no-prototype-builtins": "off",

@@ -1,16 +1,14 @@
-const _ = require('lodash')
 const input = require('./input')
 
 // -------------------------------------
 // PART 1
 // -------------------------------------
-const solution1 = null
 
 const findGridSize = n => {
   let answer = null
   let size = 1
   while (!answer) {
-    const grid = Math.pow(size, 2)
+    const grid = size ** 2
     if (grid >= n) {
       answer = size
     }
@@ -20,7 +18,7 @@ const findGridSize = n => {
 }
 
 const gridSize = findGridSize(input)
-// console.log(gridSize);
+console.log(gridSize)
 
 /* the rest is just notes from doing it by hand
 {236, 607}
@@ -47,9 +45,9 @@ class SpiralMap {
     console.log('Building a map of size', this.mapSize)
 
     // Build Map
-    for (let ri = 0; ri < this.mapSize; ri++) {
+    for (let ri = 0; ri < this.mapSize; ri += 1) {
       const row = []
-      for (let ci = 0; ci < this.mapSize; ci++) {
+      for (let ci = 0; ci < this.mapSize; ci += 1) {
         row.push(null)
       }
       this.map.push(row)
@@ -77,7 +75,6 @@ class SpiralMap {
   }
 
   populateMapByIndex() {
-    const i = 1
     for (let i = 0; i < this.mapSize * this.mapSize; i += 1) {
       if (i > 1) {
         this.moveHead()
@@ -215,9 +212,9 @@ class SpiralMap {
   }
 
   printMap() {
-    this.map.forEach((row, ri) => {
+    this.map.forEach(row => {
       let thisRow = ''
-      row.forEach((col, ci) => {
+      row.forEach(col => {
         thisRow = `${thisRow}${col}\t`
       })
       console.log(`${thisRow}\n`)

@@ -1,5 +1,5 @@
-const instructions = require('./input').split('\n')
 const _ = require('lodash')
+const instructions = require('./input').split('\n')
 
 class InstructionsParser {
   constructor() {
@@ -11,6 +11,7 @@ class InstructionsParser {
     inst.forEach(i => {
       const regEx = /([a-z]+) (inc|dec) (-?\d+) if ([a-z]+) ([=|!|<|>]+) (-?\d+)/
       const [
+        // eslint-disable-next-line no-unused-vars
         fullMatch,
         destKey,
         destOper,
@@ -66,9 +67,9 @@ class InstructionsParser {
 
     switch (oper) {
       case '==':
-        return regValue == parsedValue
+        return regValue === parsedValue
       case '!=':
-        return regValue != parsedValue
+        return regValue !== parsedValue
       case '>=':
         return regValue >= parsedValue
       case '>':
@@ -100,8 +101,6 @@ class InstructionsParser {
 // -------------------------------------
 // PART 1
 // -------------------------------------
-const solution1 = null
-
 const ip = new InstructionsParser()
 ip.parseThis(instructions)
 
