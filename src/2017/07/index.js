@@ -1,6 +1,5 @@
-const input = require('./input');
-const _ = require('lodash');
-
+const _ = require("lodash");
+const input = require("./input");
 
 class Node {
   constructor(data) {
@@ -18,13 +17,13 @@ class Tree {
 // -------------------------------------
 // PART 1
 // -------------------------------------
-let solution1 = null;
+const solution1 = null;
 
-console.log('Part 1:', solution1);
+console.log("Part 1:", solution1);
 
 // -------------------------------------
 // PART 2
 // -------------------------------------
-let solution2 = null;
+const solution2 = null;
 
-console.log('Part 2:', solution2);
+console.log("Part 2:", solution2);

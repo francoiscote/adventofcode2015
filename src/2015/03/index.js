@@ -1,4 +1,4 @@
-const input = require('./input');
+const input = require("./input");
 
 let history = {};
 
@@ -8,22 +8,22 @@ class Santa {
     this.skip = skip;
     this.position = {
       x: 0,
-      y: 0,
+      y: 0
     };
   }
 
   move(i) {
     switch (i) {
-      case '<':
+      case "<":
         this.position.x -= 1;
         break;
-      case '>':
+      case ">":
         this.position.x += 1;
         break;
-      case '^':
+      case "^":
         this.position.y -= 1;
         break;
-      case 'v':
+      case "v":
         this.position.y += 1;
         break;
       default:
@@ -44,7 +44,7 @@ class Santa {
     this.deliver(this.position);
 
     // Move and deliver
-    this.path.split('').forEach((dest, i) => {
+    this.path.split("").forEach((dest, i) => {
       if (this.skip) {
         if (this.skip === 1 && i % 2 > 0) {
           return;

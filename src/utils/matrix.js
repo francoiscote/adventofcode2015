@@ -15,9 +15,7 @@ export default class Matrix {
     return this.m;
   }
 
-  loopThrough({
-    x = 0, y = 0, w = this.width, h = this.height,
-  }, cb) {
+  loopThrough({ x = 0, y = 0, w = this.width, h = this.height }, cb) {
     for (let row = y; row < y + h; row += 1) {
       for (let col = x; col < x + w; col += 1) {
         cb(col, row);
@@ -25,9 +23,7 @@ export default class Matrix {
     }
   }
 
-  setSection({
-    id, x, y, w, h, value,
-  }) {
+  setSection({ id, x, y, w, h, value }) {
     if (Object.keys(this.sections).includes(id)) {
       throw new Error(`This Section is already registered: ${id}`);
     }
@@ -38,7 +34,7 @@ export default class Matrix {
       x,
       y,
       w,
-      h,
+      h
     });
 
     // Save values in matrix
@@ -47,11 +43,11 @@ export default class Matrix {
         x,
         y,
         w,
-        h,
+        h
       },
       (col, row) => {
         this.setValue(col, row, value);
-      },
+      }
     );
   }
 
@@ -64,7 +60,7 @@ export default class Matrix {
   }
 
   setValue(x, y, value) {
-    if (typeof value === 'function') {
+    if (typeof value === "function") {
       this.m[y][x] = value(this.m[y][x]);
     } else {
       this.m[y][x] = value;

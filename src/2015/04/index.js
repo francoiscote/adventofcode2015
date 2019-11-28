@@ -1,4 +1,4 @@
-const crypto = require('crypto');
+const crypto = require("crypto");
 
 class Hasher {
   constructor(key) {
@@ -9,11 +9,11 @@ class Hasher {
 
   findMatch() {
     while (!this.match) {
-      const md5sum = crypto.createHash('md5');
-      md5sum.update(`${this.key  }${  this.current}`);
-      const hexHash = md5sum.digest('hex');
+      const md5sum = crypto.createHash("md5");
+      md5sum.update(`${this.key}${this.current}`);
+      const hexHash = md5sum.digest("hex");
 
-      if (hexHash.slice(0, 6) === '000000') {
+      if (hexHash.slice(0, 6) === "000000") {
         this.match = this.current;
       } else {
         this.current++;
@@ -24,6 +24,6 @@ class Hasher {
   }
 }
 
-const h = new Hasher('ckczppom');
+const h = new Hasher("ckczppom");
 const v = h.findMatch();
 console.log(v);

@@ -1,5 +1,5 @@
-const instructions = require('./input').split('\n');
-const _ = require('lodash');
+const instructions = require("./input").split("\n");
+const _ = require("lodash");
 
 class InstructionsParser {
   constructor() {
@@ -8,7 +8,7 @@ class InstructionsParser {
   }
 
   parseThis(inst) {
-    inst.forEach((i) => {
+    inst.forEach(i => {
       const regEx = /([a-z]+) (inc|dec) (-?\d+) if ([a-z]+) ([=|!|<|>]+) (-?\d+)/;
       const [
         fullMatch,
@@ -17,7 +17,7 @@ class InstructionsParser {
         destValue,
         condKey,
         condOper,
-        condValue,
+        condValue
       ] = i.match(regEx);
 
       const condition = this.checkCondition(condKey, condOper, condValue);
@@ -26,8 +26,6 @@ class InstructionsParser {
         this.applyOperation(destKey, destOper, destValue);
         this.checkHighestValueEver();
       }
-
-
     });
 
     return this;
@@ -36,21 +34,21 @@ class InstructionsParser {
   checkHighestValueEver() {
     const largest = this.largestRegister;
     if (largest > this.highestValueEver) {
-      console.log('New Higher Value Ever', largest);
+      console.log("New Higher Value Ever", largest);
       this.highestValueEver = largest;
     }
   }
 
   applyOperation(key, oper, value) {
-    console.log('Apply', key, oper, value);
+    console.log("Apply", key, oper, value);
 
     const parsedValue = parseInt(value, 10);
     const regValue = this.getRegisterValue(key);
     switch (oper) {
-      case 'inc':
+      case "inc":
         this.registers[key] = regValue + parsedValue;
         break;
-      case 'dec':
+      case "dec":
         this.registers[key] = regValue - parsedValue;
         break;
       default:
@@ -61,23 +59,23 @@ class InstructionsParser {
   }
 
   checkCondition(key, oper, value) {
-    console.log('Check', key, oper, value);
+    console.log("Check", key, oper, value);
 
     const parsedValue = parseInt(value, 10);
     const regValue = this.getRegisterValue(key);
 
     switch (oper) {
-      case '==':
+      case "==":
         return regValue == parsedValue;
-      case '!=':
+      case "!=":
         return regValue != parsedValue;
-      case '>=':
+      case ">=":
         return regValue >= parsedValue;
-      case '>':
+      case ">":
         return regValue > parsedValue;
-      case '<=':
+      case "<=":
         return regValue <= parsedValue;
-      case '<':
+      case "<":
         return regValue < parsedValue;
       default:
         return false;
@@ -99,20 +97,17 @@ class InstructionsParser {
   }
 }
 
-
-
-
 // -------------------------------------
 // PART 1
 // -------------------------------------
-let solution1 = null;
+const solution1 = null;
 
 const ip = new InstructionsParser();
 ip.parseThis(instructions);
 
-console.log('Part 1:', ip.largestRegister);
+console.log("Part 1:", ip.largestRegister);
 
 // -------------------------------------
 // PART 2
 // -------------------------------------
-console.log('Part 2:', ip.highestValueEver);
+console.log("Part 2:", ip.highestValueEver);

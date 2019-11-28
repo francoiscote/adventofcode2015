@@ -1,4 +1,4 @@
-const input = require('./input').split('\n');
+const input = require("./input").split("\n");
 
 class Grid {
   constructor(width, height) {
@@ -9,8 +9,8 @@ class Grid {
   }
 
   applyOnGrid(xFrom, yFrom, xTo, yTo, operation) {
-    if (typeof operation !== 'function') {
-      throw 'Operation must be a function';
+    if (typeof operation !== "function") {
+      throw "Operation must be a function";
     }
     for (let h = yFrom; h <= yTo; h++) {
       for (let w = xFrom; w <= xTo; w++) {
@@ -25,28 +25,27 @@ class Grid {
     let actionFunc = null;
 
     switch (command) {
-      case 'toggle':
+      case "toggle":
         actionFunc = (h, w) => {
           this.grid[h][w] = !this.grid[h][w];
         };
         break;
-      case 'turnon':
+      case "turnon":
         actionFunc = (h, w) => {
           this.grid[h][w] = true;
         };
         break;
-      case 'turnoff':
+      case "turnoff":
         actionFunc = (h, w) => {
           this.grid[h][w] = false;
         };
         break;
       default:
-        console.log('Nothing to do');
+        console.log("Nothing to do");
     }
 
     this.applyOnGrid(xFrom, yFrom, xTo, yTo, actionFunc);
   }
-
 
   // ------------
   // READ OUT METHODS
@@ -54,12 +53,16 @@ class Grid {
   getLight(h, w) {
     return this.grid[h][w];
   }
+
   countLightsOn() {
     // Two-dimensional count
     return this.grid.reduce((memoRow, row) => {
       const debugRow = [];
-      const rowCount = row.reduce((memoLight, light) => memoLight += (light) ? 1 : 0, 0);
-      return memoRow += rowCount;
+      const rowCount = row.reduce(
+        (memoLight, light) => (memoLight += light ? 1 : 0),
+        0
+      );
+      return (memoRow += rowCount);
     }, 0);
   }
 }
@@ -69,12 +72,15 @@ class InstructionsParser {
     this.inst = inst;
     this.grid = grid;
   }
+
   parse() {
     this.inst.map((i, d) => {
-      const match = i.match(/(toggle|turn (on|off))\s(\d{1,3})\,(\d{1,3})\sthrough\s(\d{1,3})\,(\d{1,3})/i);
+      const match = i.match(
+        /(toggle|turn (on|off))\s(\d{1,3})\,(\d{1,3})\sthrough\s(\d{1,3})\,(\d{1,3})/i
+      );
 
       // Format Values
-      const command = match[1].split(' ').join('');
+      const command = match[1].split(" ").join("");
       const xFrom = parseInt(match[3], 10);
       const yFrom = parseInt(match[4], 10);
       const xTo = parseInt(match[5], 10);

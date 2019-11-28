@@ -1,15 +1,15 @@
-import { splitLines } from 'utils/strings';
-import input from './input';
-import _ from 'lodash';
+import { splitLines } from "utils/strings";
+import _ from "lodash";
+import input from "./input";
 
 // -------------------------------------
 // PART 1
 // -------------------------------------
 
-const parsedInput = splitLines(input, (string) => {
+const parsedInput = splitLines(input, string => {
   const reg = new RegExp(
     /^Step ([A-Z]{1}) must be finished before step ([A-Z]{1}) can begin.$/,
-    'g',
+    "g"
   );
   const [fullString, parent, child] = reg.exec(string);
   return { parent, child };
@@ -23,7 +23,11 @@ const stepsTree = parsedInput.reduce((acc, cur) => {
 
   // Create or Modify a child Node
   if (!Object.keys(acc).includes(cur.child)) {
-    acc[cur.child] = { completed: false, assigned: false, parents: [cur.parent] };
+    acc[cur.child] = {
+      completed: false,
+      assigned: false,
+      parents: [cur.parent]
+    };
   } else {
     acc[cur.child].parents.push(cur.parent);
   }
@@ -31,7 +35,8 @@ const stepsTree = parsedInput.reduce((acc, cur) => {
   return acc;
 }, {});
 
-const areCompleted = (ids, self) => !ids.some(id => self[id].completed === false);
+const areCompleted = (ids, self) =>
+  !ids.some(id => self[id].completed === false);
 
 const nextItems = items =>
   Object.entries(items)
@@ -43,7 +48,7 @@ const nextItems = items =>
     }, [])
     .sort();
 
-const completeNextStep = (items) => {
+const completeNextStep = items => {
   const nextKey = nextItems(items)[0];
   if (nextKey) {
     items[nextKey].completed = true;
@@ -52,8 +57,8 @@ const completeNextStep = (items) => {
   return false;
 };
 
-const completeSteps = (steps) => {
-  let solution = '';
+const completeSteps = steps => {
+  let solution = "";
   let s = completeNextStep(steps);
   while (s) {
     solution = `${solution}${s}`;
@@ -63,10 +68,10 @@ const completeSteps = (steps) => {
 };
 
 const solution1 = completeSteps(stepsTree);
-console.log('Part 1:', solution1);
+console.log("Part 1:", solution1);
 
 // Reset
-Object.keys(stepsTree).forEach((s) => {
+Object.keys(stepsTree).forEach(s => {
   stepsTree[s].completed = false;
 });
 
@@ -106,13 +111,13 @@ class Queue {
 
   assignJobs() {
     const next = nextItems(this.stepsTree);
-    console.log('next length', next.length);
+    console.log("next length", next.length);
     // console.log(next);
     if (next.length === 0) {
       return;
     }
 
-    this.workers = this.workers.map((w) => {
+    this.workers = this.workers.map(w => {
       if (w === null) {
         const step = next.splice(0, 1)[0];
         if (step) {
@@ -128,10 +133,10 @@ class Queue {
     this.assignJobs();
     this.tick();
 
-    return { time: this.time, history: this.history.join('') };
+    return { time: this.time, history: this.history.join("") };
   }
 }
 
 const myQueue = new Queue({ workers: 5, stepsTree });
 const solution2 = myQueue.start();
-console.log('Part 2:', solution2);
+console.log("Part 2:", solution2);

@@ -1,5 +1,4 @@
-const input07 = require('./input').split('\n');
-
+const input07 = require("./input").split("\n");
 
 class InstructionsParser {
   constructor(input) {
@@ -7,12 +6,16 @@ class InstructionsParser {
   }
 
   parse() {
-    return this.input.map((instr) => {
+    return this.input.map(instr => {
       const instruction = {};
 
-      const splited = instr.split(' -> ');
+      const splited = instr.split(" -> ");
 
-      instruction[splited[1]] = { value: splited[0], answer: null, resolved: 0 };
+      instruction[splited[1]] = {
+        value: splited[0],
+        answer: null,
+        resolved: 0
+      };
 
       return instruction;
     });

@@ -1,15 +1,17 @@
-const input = require('./input').split('\n');
-const _ = require('lodash');
+const input = require("./input").split("\n");
+const _ = require("lodash");
 
 // -------------------------------------
 // PART 1
 // -------------------------------------
-let solution1 = null;
-
+const solution1 = null;
 
 class InstructionsParser {
   constructor(instructions) {
-    this.instructions = _.zipWith(instructions, i => ({ value: parseInt(i, 10), offset: 0 }) );
+    this.instructions = _.zipWith(instructions, i => ({
+      value: parseInt(i, 10),
+      offset: 0
+    }));
     this.current = 0;
     this.stepCount = 0;
   }
@@ -17,7 +19,7 @@ class InstructionsParser {
   parse() {
     // loop through instructions until we try to hit an index
     // outside of the list
-    while(this.current <= this.instructions.length - 1) {
+    while (this.current <= this.instructions.length - 1) {
       this.move();
     }
   }
@@ -48,12 +50,12 @@ class InstructionsParser {
 const parser = new InstructionsParser(input);
 parser.parse();
 
-console.log('Part 1:', parser.stepCount);
+console.log("Part 1:", parser.stepCount);
 
 // -------------------------------------
 // PART 2
 // -------------------------------------
-let solution2 = null;
+const solution2 = null;
 
 class InstructionsParser2 extends InstructionsParser {
   updateOffset() {
@@ -69,4 +71,4 @@ class InstructionsParser2 extends InstructionsParser {
 const parser2 = new InstructionsParser2(input);
 parser2.parse();
 
-console.log('Part 2:', parser2.stepCount);
+console.log("Part 2:", parser2.stepCount);

@@ -1,15 +1,15 @@
-const input = require('./input');
-const _ = require('lodash');
+const _ = require("lodash");
+const input = require("./input");
 
 // -------------------------------------
 // PART 1
 // -------------------------------------
-let solution1 = null;
+const solution1 = null;
 
 class MemoryManager {
   constructor(blocks) {
     // save blocks as array of integers
-    this.blocks = blocks.split('\t').map(m => parseInt(m, 10));
+    this.blocks = blocks.split("\t").map(m => parseInt(m, 10));
     this.states = [];
     this.duplicatedIndex = null;
   }
@@ -49,12 +49,12 @@ class MemoryManager {
   }
 
   get currentStateHash() {
-    return this.blocks.join('-');
+    return this.blocks.join("-");
   }
 
   get firstBiggestBlockIndex() {
     const bigValue = Math.max(...this.blocks);
-    return this.blocks.findIndex( (b) => b === bigValue );
+    return this.blocks.findIndex(b => b === bigValue);
   }
 
   get redisAmount() {
@@ -69,10 +69,10 @@ class MemoryManager {
 const mem = new MemoryManager(input);
 mem.repair();
 
-console.log('Part 1:', mem.redisAmount);
+console.log("Part 1:", mem.redisAmount);
 
 // -------------------------------------
 // PART 2
 // -------------------------------------
-let solution2 = null;
-console.log('Part 2:', mem.loopSize);
+const solution2 = null;
+console.log("Part 2:", mem.loopSize);

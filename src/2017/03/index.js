@@ -1,12 +1,12 @@
-const input = require('./input');
-const _ = require('lodash');
+const _ = require("lodash");
+const input = require("./input");
 
 // -------------------------------------
 // PART 1
 // -------------------------------------
 const solution1 = null;
 
-const findGridSize = (n) => {
+const findGridSize = n => {
   let answer = null;
   let size = 1;
   while (!answer) {
@@ -21,7 +21,6 @@ const findGridSize = (n) => {
 
 const gridSize = findGridSize(input);
 // console.log(gridSize);
-
 
 /* the rest is just notes from doing it by hand
 {236, 607}
@@ -41,16 +40,15 @@ corner is the same as the distance from my number to the center. Mathemagics!
 // -------------------------------------
 
 class SpiralMap {
-
   constructor(size) {
     this.map = [];
     this.mapSize = size;
 
-    console.log('Building a map of size', this.mapSize);
+    console.log("Building a map of size", this.mapSize);
 
     // Build Map
     for (let ri = 0; ri < this.mapSize; ri++) {
-      let row = [];
+      const row = [];
       for (let ci = 0; ci < this.mapSize; ci++) {
         row.push(null);
       }
@@ -58,28 +56,28 @@ class SpiralMap {
     }
 
     // Define center
-    const middle = ((this.mapSize - 1) / 2);
+    const middle = (this.mapSize - 1) / 2;
     this.head = {
       x: middle,
       y: middle,
       currentMovePattern: 0,
       currentSquareSize: 1,
-      movesCounter: 0,
-    }
+      movesCounter: 0
+    };
 
     // Spiral Move Pattern
     this.MOVE_PATTERN = [
-      {x: 1, y: 0},
-      {x: 0, y: -1},
-      {x: -1, y: 0},
-      {x: 0, y: 1},
+      { x: 1, y: 0 },
+      { x: 0, y: -1 },
+      { x: -1, y: 0 },
+      { x: 0, y: 1 }
     ];
 
     this.populateMap(this.mapSize);
   }
 
   populateMapByIndex() {
-    let i = 1;
+    const i = 1;
     for (let i = 0; i < this.mapSize * this.mapSize; i += 1) {
       if (i > 1) {
         this.moveHead();
@@ -108,31 +106,33 @@ class SpiralMap {
         break;
       }
     }
-    console.log('Ended:', newVal);
+    console.log("Ended:", newVal);
   }
 
   calculateValueAround(sourceX, sourceY) {
-    console.log('\n--------------------');
+    console.log("\n--------------------");
     console.log(`Calculate around ${sourceX}, ${sourceY}`);
     const neighboursMap = [
-      {x: 1, y: 0},
-      {x: 0, y: 1},
-      {x: 1, y: 1},
-      {x: -1, y: 0},
-      {x: -1, y: 1},
-      {x: 0, y: -1},
-      {x: 1, y: -1},
-      {x: -1, y: -1},
+      { x: 1, y: 0 },
+      { x: 0, y: 1 },
+      { x: 1, y: 1 },
+      { x: -1, y: 0 },
+      { x: -1, y: 1 },
+      { x: 0, y: -1 },
+      { x: 1, y: -1 },
+      { x: -1, y: -1 }
     ];
 
     return neighboursMap.reduce((acc, move) => {
       const nextPosition = {
         x: sourceX + move.x,
-        y: sourceY + move.y,
+        y: sourceY + move.y
       };
       let sum = 0;
       const addValue = this.getValue(nextPosition.x, nextPosition.y);
-      console.log(`-- found ${addValue} from ${nextPosition.x}, ${nextPosition.y}`);
+      console.log(
+        `-- found ${addValue} from ${nextPosition.x}, ${nextPosition.y}`
+      );
       if (addValue) {
         sum = addValue;
       }
@@ -182,20 +182,24 @@ class SpiralMap {
 
   updateMovePattern() {
     this.head.currentMovePattern += 1;
-    if ( this.head.currentMovePattern > this.MOVE_PATTERN.length - 1) {
+    if (this.head.currentMovePattern > this.MOVE_PATTERN.length - 1) {
       this.head.currentMovePattern = 0;
     }
-    //console.log('Updated Move Pattern to ', this.currentMovePattern);
+    // console.log('Updated Move Pattern to ', this.currentMovePattern);
   }
 
   writeToHead(value) {
     const row = this.map[this.head.y];
     if (row) {
       row[this.head.x] = value;
-      console.log(`Writing value ${value} to head at x:${this.head.x}, y:${this.head.y}`);
+      console.log(
+        `Writing value ${value} to head at x:${this.head.x}, y:${this.head.y}`
+      );
       return;
     }
-    throw new Error(`Cannot write value ${value} to head at x:${this.head.x}, y:${this.head.y}`);
+    throw new Error(
+      `Cannot write value ${value} to head at x:${this.head.x}, y:${this.head.y}`
+    );
   }
 
   getValue(x, y) {
@@ -212,15 +216,14 @@ class SpiralMap {
 
   printMap() {
     this.map.forEach((row, ri) => {
-      let thisRow = '';
+      let thisRow = "";
       row.forEach((col, ci) => {
         thisRow = `${thisRow}${col}\t`;
       });
       console.log(`${thisRow}\n`);
     });
   }
-
-};
+}
 
 const part2Map = new SpiralMap(607);
 part2Map.populateMap(368078);
