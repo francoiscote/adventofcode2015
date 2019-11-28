@@ -1,29 +1,29 @@
-const input07 = require("./input").split("\n");
+const input07 = require('./input').split('\n')
 
 class InstructionsParser {
   constructor(input) {
-    this.input = input;
+    this.input = input
   }
 
   parse() {
     return this.input.map(instr => {
-      const instruction = {};
+      const instruction = {}
 
-      const splited = instr.split(" -> ");
+      const splited = instr.split(' -> ')
 
       instruction[splited[1]] = {
         value: splited[0],
         answer: null,
-        resolved: 0
-      };
+        resolved: 0,
+      }
 
-      return instruction;
-    });
+      return instruction
+    })
   }
 }
 
-const ip = new InstructionsParser(input07);
-console.log(ip.parse());
+const ip = new InstructionsParser(input07)
+console.log(ip.parse())
 
 // {
 //   'ad': {

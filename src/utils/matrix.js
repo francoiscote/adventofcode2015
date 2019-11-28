@@ -1,31 +1,31 @@
 export default class Matrix {
   constructor(width, height, defaultValue) {
-    this.width = width;
-    this.height = height;
-    this.m = [];
-    this.sections = [];
+    this.width = width
+    this.height = height
+    this.m = []
+    this.sections = []
 
     for (let y = 0; y < height; y += 1) {
-      const row = new Array(width).fill(defaultValue);
-      this.m[y] = row;
+      const row = new Array(width).fill(defaultValue)
+      this.m[y] = row
     }
   }
 
   get matrix() {
-    return this.m;
+    return this.m
   }
 
   loopThrough({ x = 0, y = 0, w = this.width, h = this.height }, cb) {
     for (let row = y; row < y + h; row += 1) {
       for (let col = x; col < x + w; col += 1) {
-        cb(col, row);
+        cb(col, row)
       }
     }
   }
 
   setSection({ id, x, y, w, h, value }) {
     if (Object.keys(this.sections).includes(id)) {
-      throw new Error(`This Section is already registered: ${id}`);
+      throw new Error(`This Section is already registered: ${id}`)
     }
 
     // Save section
@@ -34,8 +34,8 @@ export default class Matrix {
       x,
       y,
       w,
-      h
-    });
+      h,
+    })
 
     // Save values in matrix
     this.loopThrough(
@@ -43,31 +43,31 @@ export default class Matrix {
         x,
         y,
         w,
-        h
+        h,
       },
       (col, row) => {
-        this.setValue(col, row, value);
-      }
-    );
+        this.setValue(col, row, value)
+      },
+    )
   }
 
   getSections() {
-    return this.sections;
+    return this.sections
   }
 
   getSection(id) {
-    return this.sections[id];
+    return this.sections[id]
   }
 
   setValue(x, y, value) {
-    if (typeof value === "function") {
-      this.m[y][x] = value(this.m[y][x]);
+    if (typeof value === 'function') {
+      this.m[y][x] = value(this.m[y][x])
     } else {
-      this.m[y][x] = value;
+      this.m[y][x] = value
     }
   }
 
   getValue(x, y) {
-    return this.m[y][x];
+    return this.m[y][x]
   }
 }

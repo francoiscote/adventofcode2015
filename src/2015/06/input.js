@@ -297,4 +297,4 @@ turn off 225,603 through 483,920
 toggle 717,493 through 930,875
 toggle 534,948 through 599,968
 turn on 522,730 through 968,950
-turn off 102,229 through 674,529`;
+turn off 102,229 through 674,529`

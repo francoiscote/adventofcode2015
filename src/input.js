@@ -1,3 +1,3 @@
-const input = "";
+const input = ''
 
-export default input;
+export default input
