@@ -16,8 +16,8 @@
   "scripts": {
     "dev": "nodemon --exec babel-node ./src/index.js",
     "dev:debug": "nodemon --inspect --exec babel-node ./src/index.js",
-    "lint": "eslint '**/*.{js}'",
-    "lint:fix": "eslint --fix '**/*.{js}'",
+    "lint": "eslint '**/*.js'",
+    "lint:fix": "eslint --fix '**/*.js'",
     "lint:check": "eslint --print-config server.js | eslint-config-prettier-check",
     "start": "node ./dist/index.js"
   },
