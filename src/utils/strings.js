@@ -7,7 +7,7 @@ export const splitLines = (string = '', transform = undefined) =>
   split(string, /\r?\n/, transform)
 
 /**
- * This utility function will get a string of consecutive numbers
+ * This utility function will get a string of numbers
  * and ouput an array of integers from those numbers.
  * @param {string} string original input string
  */
